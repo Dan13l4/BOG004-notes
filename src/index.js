@@ -1,12 +1,19 @@
-import React from 'react';
+import React, {Suspense} from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
+import { firebaseConfig } from './firebase/firebaseConfig';
+
+import { FirebaseAppProvider } from 'reactfire';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <FirebaseAppProvider firebaseConfig={firebaseConfig}>
+      <Suspense fallback={"Conectandose al servidor..."}>
+        <App />
+      </Suspense>
+    </FirebaseAppProvider>
   </React.StrictMode>
 );
 

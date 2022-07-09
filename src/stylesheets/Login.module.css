@@ -1,0 +1,20 @@
+*{
+    background-color: #FFDD00;
+    font-family: "Poppins";
+}
+
+.Login{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30vh;
+    font-weight: 500;
+}
+
+.btn{
+    display: flex;
+    margin: 15px;
+    gap: 20px;
+    justify-content: center;
+}
