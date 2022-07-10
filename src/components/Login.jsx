@@ -2,17 +2,12 @@ import React from 'react';
 import { getAuth, GoogleAuthProvider, signInWithPopup, signInWithEmailAndPassword } from "firebase/auth";
 import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
-import { useForm } from "react-hook-form";
 import { useState } from 'react';
 import { auth } from '../firebase/firebaseConfig';
+import logo from "./img/logo.png"
 import styles from "../stylesheets/Login.module.css"
 
 function Login() {
-
-  const {
-    register,
-    formState: { errors },
-  } = useForm({ mode: "onBlur", reValidateMode: "onChange" }); // librería validacion form
 
   const [hasError, setHasError] = useState("");
 
@@ -58,27 +53,39 @@ function Login() {
   return (
     <div>
       <div  className={styles.Login}>
+        <img src={logo} alt="logoTakeYourNote" width="300" height="180" className={styles.logo} />
         <form>
           <div className="form-group">
             <label htmlFor="exampleInputEmail1">Email address</label>
-            <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"/>
+            <input 
+            type="email" 
+            className="form-control" 
+            id="exampleInputEmail1" 
+            aria-describedby="emailHelp" 
+            placeholder="Enter email" 
+            onChange={(ev) => setEmail(ev.target.value)}/>
           </div>
+
           <div className="form-group">
             <label htmlFor="exampleInputPassword1">Password</label>
-            <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Password"/>
+            <input 
+            type="password" 
+            className="form-control" 
+            id="exampleInputPassword1" 
+            placeholder="Password"
+            onChange={(ev) => setPass(ev.target.value)}/>
           </div>
-          <button type="submit" className="btn btn-primary" style={{color:'white', marginLeft:"30%"}}>Submit</button>
+          <button type="submit" className="btn btn-primary" style={{color:'white', marginLeft:"30%"}} onClick={loginIn}>Enter</button>
         </form>
-      </div>
+        <div className={styles.btn}>
 
-      <div className={styles.btn}>
+        <Link to="/Register" className="btn btn-primary" style={{color:"white", marginLeft:"50px", marginRight:"50px"}}> Create a acount</Link>
 
-        <button className="btn btn-primary" style={{marginLeft:"10px", color:"white"}}> <Link to="/Register"></Link> Create a acount</button>
-
-        <button onClick={signInWithGoogle} id="btn-google">
-          <img src="https://i.imgur.com/bD3SqPX.png" alt="logoGoogle"></img>
-           Continue With Google
+        <button onClick={signInWithGoogle} id="btn-google" className="btn btn-primary" style={{color:"white", marginLeft:"50px", marginRight:"50px"}}>
+          <img src="https://i.imgur.com/bD3SqPX.png" alt="logoGoogle" className={styles.googleLogo}></img> Continue With Google
         </button>
+      </div>
+      <p>{hasError}</p>
       </div>
     </div>
   );

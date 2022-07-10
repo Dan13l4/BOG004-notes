@@ -1,10 +1,4 @@
-*{
-    background-color: #fed7f3;
-    font-family: "Poppins";
-    margin: 0;
-}
-
-.Login{
+.Register{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -20,18 +14,8 @@
     box-shadow: 0 0 40px rgba(8,7,16,0.6);
 }
 
-.btn{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 20px;
-}
-
-.logo{
-    margin-top: 20px;
-}
-
-.googleLogo{
-    width: 20px;
-    cursor: pointer;
+.h2{
+    font-size: 25px;
+    margin-bottom: 20px;
+    margin-top: 10vh;
 }

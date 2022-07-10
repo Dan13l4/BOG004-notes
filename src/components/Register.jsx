@@ -1,9 +1,7 @@
 import React, {useState} from 'react';
-import "firebase/auth";
-import { getFirestore } from 'firebase/firestore';
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import { useFirebaseApp } from "reactfire"
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import styles from "../stylesheets/Register.module.css"
 
 function Register() {
 
@@ -32,56 +30,57 @@ function Register() {
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
+      console.log(errorCode)
+      setHasError("No se ha podido crear el usuario")
       // ..
     });
   }
   
   return (
-    <div className="Register">
-      <div>
-      <div>
+    <div className={styles.Register}>
+      <h2 className={styles.h2}>Create a new User</h2>
         <form className="form-login" onSubmit={handleSubmit} noValidate>
 
-          <div>
-              email
+          <div className="form-group">
+            <label htmlFor="exampleInputEmail1">Email address</label>
             <input 
               type="email"
               id='email'
               name='email'
-              placeholder='Enter your email'
-              className='email'
+              className='form-control'
+              aria-describedby="emailHelp"
+              placeholder="Enter your email"
               onChange={(ev) => setEmail(ev.target.value)} 
             />
           </div>
 
-          <div>
-                password
+          <div className="form-group">
+          <label htmlFor="exampleInputPassword1">Password</label>
             <input
                 id="password" // input para el password
                 type="password"
                 name="password"
-                placeholder="Contraseña"
-                className="password"
+                placeholder="Enter you password"
+                className="form-control"
                 onChange={(ev) => setPass(ev.target.value)}
                 />
           </div>
 
-          <div>
-                user
+          <div className="form-group">
+            <label htmlFor="exampleInputEmail1">User Name</label>
             <input 
               type="text"
               id='user'
               name='user'
               placeholder='Enter your user'
-              className='user'
+              className='form-control'
               onChange={(ev) => setUser(ev.target.value)} 
             />
           </div>
-          {hasError && {hasError}}
-          <button onClick={submit}>Registrarse</button>
+          <button onClick={submit} className="btn btn-primary" style={{marginLeft:"50px", marginRight:"50px"}}>Registrarse</button>
         </form>
-      </div>
-      </div>
+        <Link to="/" className="btn btn-primary" style={{marginLeft:"50px", marginRight:"50px", marginTop:"10px"}}>Volver</Link>
+        <p>{hasError}</p>
     </div>
   );
 }
