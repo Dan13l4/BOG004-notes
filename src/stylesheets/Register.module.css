@@ -1,0 +1,21 @@
+.Register{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 3vw;
+    margin-top: 7vh;
+    font-weight: 500;
+    font-size: 15px;
+    height: 560px;
+    width: 350px;
+    background-color: rgba(255,255,255,0.13);
+    border-radius: 10px;
+    border: 2px solid rgba(255,255,255,0.1);
+    box-shadow: 0 0 40px rgba(8,7,16,0.6);
+}
+
+.h2{
+    font-size: 25px;
+    margin-bottom: 20px;
+    margin-top: 10vh;
+}

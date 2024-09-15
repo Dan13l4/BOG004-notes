@@ -3,7 +3,7 @@ import { initializeApp } from "firebase/app";
 import { getFirestore, collection, getDocs, query, updateDoc, doc } from "firebase/firestore";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
 
-const firebaseConfig = {
+export const firebaseConfig = {
   apiKey: "AIzaSyCGojWN4LpLXannEa5fT2cSiKD_9aPZQWE",
   authDomain: "take-your-note-c9f64.firebaseapp.com",
   projectId: "take-your-note-c9f64",
@@ -16,8 +16,11 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-const provider = new GoogleAuthProvider();
+const provider = new GoogleAuthProvider(app);
 const db = getFirestore(app);
+const user = auth.currentUser;
+
+export { db, user, auth };
 
 
 
